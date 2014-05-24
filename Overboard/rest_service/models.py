@@ -28,6 +28,7 @@ class Card(models.Model):
     title = models.CharField(max_length=45)
     created_on = models.DateField()
     creator = models.ForeignKey('User')
+    column = models.ForeignKey('Column')
 
 class BoardPermission(models.Model):
     user = models.ForeignKey('User')
