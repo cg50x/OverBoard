@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_service'
+    'rest_framework',
+    'rest_service'    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +49,15 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGINATE_BY': 10
+}
+
 ROOT_URLCONF = 'Overboard.urls'
 
 WSGI_APPLICATION = 'Overboard.wsgi.application'
+
 
 
 # Database
