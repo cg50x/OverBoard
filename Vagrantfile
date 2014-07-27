@@ -4,8 +4,14 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+# NOTE
+# If you're running Windows, you need to make sure your Guest VM can write
+# symbolic links. Please run secpol.msc and navigate to Local Policies ->
+# User Rights Assignment and add yourself to the "Create symbolic links" policy
+
 $provisionScript = <<SCRIPT
 
+sudo apt-get install git
 curl https://install.meteor.com | /bin/sh
 
 SCRIPT
