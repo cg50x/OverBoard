@@ -11,8 +11,17 @@ VAGRANTFILE_API_VERSION = "2"
 
 $provisionScript = <<SCRIPT
 
-sudo apt-get install git
-curl https://install.meteor.com | /bin/sh
+#sudo apt-get install git
+#curl https://install.meteor.com | /bin/sh
+#meteor help
+
+~/.meteor/tools/latest/bin/npm install -g meteorite
+
+~/.meteor/tools/latest/bin/mrt add accounts-base
+~/.meteor/tools/latest/bin/mrt add accounts-password
+~/.meteor/tools/latest/bin/mrt add accounts-ui
+~/.meteor/tools/latest/bin/mrt add bootstrap-3
+~/.meteor/tools/latest/bin/mrt add iron-router
 
 SCRIPT
 
