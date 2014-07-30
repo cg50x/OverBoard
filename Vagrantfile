@@ -9,19 +9,25 @@ VAGRANTFILE_API_VERSION = "2"
 # symbolic links. Please run secpol.msc and navigate to Local Policies ->
 # User Rights Assignment and add yourself to the "Create symbolic links" policy
 
+# Provision script doesn't work; Vagrant keeps running it as root user, when it
+# should be run as vagrant user. In the meantime, you should manually run this
+# script as vagrant via SSH.
+
 $provisionScript = <<SCRIPT
 
-#sudo apt-get install git
-#curl https://install.meteor.com | /bin/sh
-#meteor help
+apt-get install -y git
+export PATH=~/.meteor/tools/latest/bin:$PATH
 
-~/.meteor/tools/latest/bin/npm install -g meteorite
+su - "vagrant" -c "curl https://install.meteor.com | /bin/sh"
+su - "vagrant" -c "meteor help"
 
-~/.meteor/tools/latest/bin/mrt add accounts-base
-~/.meteor/tools/latest/bin/mrt add accounts-password
-~/.meteor/tools/latest/bin/mrt add accounts-ui
-~/.meteor/tools/latest/bin/mrt add bootstrap-3
-~/.meteor/tools/latest/bin/mrt add iron-router
+su - "vagrant" -c "npm install -g meteorite"
+
+su - "vagrant" -c "mrt add accounts-base"
+su - "vagrant" -c "mrt add accounts-password"
+su - "vagrant" -c "mrt add accounts-ui"
+su - "vagrant" -c "mrt add bootstrap-3"
+su - "vagrant" -c "mrt add iron-router"
 
 SCRIPT
 
@@ -33,7 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "ubuntu/trusty64"
   
-  config.vm.provision "shell", inline: $provisionScript
+  # config.vm.provision "shell", inline: $provisionScript
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
