@@ -6,7 +6,7 @@ if(Meteor.isClient) {
     }, {except: ['frontpage']});
     Router.map(function() {
         this.route('frontpage', {path: '/'});
-        this.route('mainMenu', {path: '/main'});
+        this.route('dashboard', {path: '/dashboard'});
     });
     
     Template.login.events({
@@ -20,7 +20,7 @@ if(Meteor.isClient) {
                     alert('User not found!');
                 } else {
                     alert('User FOUND!');
-                    Router.go('mainMenu');
+                    Router.go('dashboard');
                 }
             });
             return false;

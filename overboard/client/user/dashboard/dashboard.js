@@ -1,4 +1,4 @@
-Template.mainMenu.events({
+Template.dashboard.events({
     'click #logout' : function(e, t) {
         Meteor.logout(function(err) {
             if (err) {
@@ -10,5 +10,5 @@ Template.mainMenu.events({
     }
 });
 
-Template.mainMenu.rendered = function() {
+Template.dashboard.rendered = function() {
 };
