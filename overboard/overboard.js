@@ -1,12 +1,9 @@
 if(Meteor.isClient) {
-    
     Router.onBeforeAction(function() {
-        if(!Meteor.user()) {
-            alert(Meteor.user());
+        if (Meteor.user() !== undefined && !Meteor.user()) {
             Router.go('frontpage');
         }
     }, {except: ['frontpage']});
-    
     Router.map(function() {
         this.route('frontpage', {path: '/'});
         this.route('mainMenu', {path: '/main'});
@@ -23,7 +20,6 @@ if(Meteor.isClient) {
                     alert('User not found!');
                 } else {
                     alert('User FOUND!');
-                    alert(Meteor.user());
                     Router.go('mainMenu');
                 }
             });
@@ -42,7 +38,7 @@ if(Meteor.isClient) {
                     alert('Sorry! Could not create the user');
                 } else {
                     alert('User created!');
-                    alert(Meteor.user());
+                    //alert(Meteor.user());
                 }
             });
             return false;

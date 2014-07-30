@@ -11,7 +11,4 @@ Template.mainMenu.events({
 });
 
 Template.mainMenu.rendered = function() {
-    setInterval(function() {
-        $('h1').toggle();
-    }, 1000);
 };
