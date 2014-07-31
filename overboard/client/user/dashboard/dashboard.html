@@ -1,4 +1,51 @@
 <template name="dashboard">
-    <h1>User Main Menu Here</h1>
-    <button class="btn btn-default" id="logout">Log Out</button>
+    {{> user_navbar}}
+    {{> dashboard_body}}
+    {{> dashboard_addBoard}}
+</template>
+
+
+<template name="user_navbar">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a href="#" class="navbar-brand">Overboard</a>
+    </div>
+    <p class="navbar-text">{{currentUser}}</p>
+    <button type="button" class="btn btn-default navbar-btn navbar-right" id="logout">Sign Out</button>
+  </div>
+</nav>    
+
+</template>
+
+<template name="dashboard_body">
+
+<div class="container">
+<h2 class="col-sm-12">My Boards</h2>
+<div class="container col-sm-12">
+    <div class="list-group">
+        <a href="#" class="list-group-item">Board A</a>
+        <a href="#" class="list-group-item">Board B</a>
+        <a href="#" class="list-group-item">Board C</a>
+        <a href="#" class="list-group-item">Board D</a>
+        <a href="#" class="list-group-item">Board E</a>
+    </div>
+    <button class="btn btn-success">+ Add New Board...</button>
+</div>
+</div>
+
+</template>
+
+
+<template name="dashboard_addBoard">
+
+<div id="dashboard_addBoard" class="modal fade col-sm-6 col-sm-offset-3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+        <h1>Add Board Name</h1>
+    </div>
+    Name:
+    <input type="text" class="form-control">
+</div>
+    
 </template>
